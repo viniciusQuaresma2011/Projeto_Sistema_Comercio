@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+	
+</head>
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+	}
+
+	#div2{
+		display: inline-block;
+		float: right ;
+		
+		margin-left: -30px;
+	}
+
+</style>
+
+
+<body>
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+
+	<div class="container" align="center" id="div2">
+		
+		<h1>Cadastrar Dispositivo</h1>
+	
+		<form class="w-25" align="center" th:object="${dispositivos}"   method = "post"  th:action="@{/cadastro/dispositivos/salvar}">
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Nome do Dispositivo</label> <input name="nome"
+					th:field="*{nome}" type="text" class="form-control" id="exampleFormControlInput1"
+					placeholder="nome do dispositivo" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">IMEI</label> <input name="nome"
+					th:field="*{imei}" type="text" class="form-control" id="exampleFormControlInput1"
+					placeholder="imei" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Modelo</label> <select
+					th:field="*{modelo}" name="modelo" class="form-control" id="exampleFormControlSelect1">
+					<option th:each="p : ${listaModelos}" th:value="${p}" th:text="${p}"  required></option>
+				</select>
+			</div>
+
+			
+			<input type="hidden" id="id" th:field="*{id}" value="" />
+			<button class="btn btn-primary" type="submit" > Salvar</button>
+			<a type="button" class="btn btn-primary" th:href="@{/cadastro/dispositivos/listar}">Voltar</a>
+		</form>
+	
+
+
+
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+</body>
+</html>

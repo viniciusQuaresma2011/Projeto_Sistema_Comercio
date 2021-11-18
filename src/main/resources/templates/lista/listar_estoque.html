@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head_pagina">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+	}
+
+	#div2{
+		
+		float: center ;
+		
+			
+	}
+
+	.background-botao{
+		background-color:dodgerblue ;
+		border-radius: 2px;
+		border-color: black;
+	}
+	.cor-text{
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: large;
+		font-weight: 100;
+		font-style: italic;
+	}
+</style>
+<body>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+	<div class="container  fixed" id="div2">
+		<nav class="navbar navbar-expand-md ">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Lista de Estoque</span></li>
+				</ul>
+
+			</div>
+
+			<form class="form-inline w-15 p-2" method="POST" action="buscarPorNomeEstoque">
+				<input class="form-control mr-sm-2" type="search" placeholder="nome" name="nome" />
+				<button class="btn btn-outline-success my-2 my-sm-0">Pesquisar</button>
+			</form>
+		</nav>
+	
+
+		<div align=" right" class="container" >
+			<a class="btn  btn-md background-botao btn-outline-primary" href="/estoque/exportarCsv" role="button"> <span class="oi oi-plus"
+					title="relatorio" aria-hidden="true" ></span> <span class="cor-text">Gerar Relatorio</span>
+			</a>
+		<a class="btn btn-primary btn-md" href="/cadastro/estoque" role="button"> <span class="oi oi-plus"
+				title="Cadastro" aria-hidden="true"></span> <span>Cadastrar Estoque</span>
+		</a>
+	
+
+
+		<div class="container  fixed p-3" style="text-align: center;">
+		<table class="table table-striped table-bordered ">
+			<thead>
+				<tr>
+
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>Quantidade</th>
+					<th style="width: 20%;">Acoes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="estoque : ${listaEstoque}">
+					<td th:text="${estoque.nome}"></td>
+					<td th:text="${estoque.tipo}"></td>
+					<td th:text="${estoque.quantidade}"></td>
+
+					<td colspan="2"><a class="btn btn-primary   material-icons"
+							th:href="@{/cadastro/estoque/editar/{id}(id=${estoque.id})}" role="button"> Editar<span
+								class="oi oi-brush" title="Editar" aria-hidden="true"></span></a> <a
+							class="btn btn-primary material-icons" data-toggle="modal" data-target="#modal-warning"
+							th:href="@{/cadastro/estoque/remover/{id}(id=${estoque.id})}"
+							th:attr="data-target='#modal-warning'+${estoque.id }">Remover<span class="oi oi-circle-x"
+								aria-hidden="true"></span></a>
+
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+	
+
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+</body>
+
+</html>

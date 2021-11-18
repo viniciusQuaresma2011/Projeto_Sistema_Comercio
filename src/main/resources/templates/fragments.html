@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head_pagina">
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pagina Principal</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="/style.css" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+	<div th:fragment="menu">
+
+		<div class="sidebar" >
+			<input type="checkbox" id="check">
+			<label for="check">
+				<i class="fas fa-bars" id="btn"></i>
+				<i class="fas fa-times" id="cancel"></i>
+			</label>
+			<header>Menu</header>
+			<a href="/" class="active">
+				<i class="fas fa-chart-line"></i>
+				<span>Pagina Inicial</span>
+			</a>
+			<a href="" th:href="@{/cadastro/usuarios/listar}">
+				<i class="fas fa-users"></i>
+				<span>Usuario</span>
+			</a>
+			<a href="" th:href="@{/cadastro/produto/listar}">
+				<i class="fas fa-box-open"></i>
+				<span>Produto</span>
+			</a>
+			<a href="" th:href="@{/cadastro/estoque/listar}">
+				<i class="fas fa-people-carry"></i>
+				<span>Estoque</span>
+			</a>
+			<a href="" th:href="@{/cadastro/dispositivos/listar}">
+				<i class="fas fa-mobile-alt"></i>
+				<span>Dispositivo</span>
+			</a>
+			<a href="" th:href="@{/objetosCadastradosQuantidade}">
+				<i class="fas fa-tasks"></i>
+				<span>Relat&oacute;rios</span>
+			</a>
+		</div>
+		<!-- 				<div> -->
+		<!-- 					<nav class="navbar navbar-light bg-light"> -->
+		<!-- 						<form class="form-inline"> -->
+		<!-- 							<input class="form-control mr-sm-2" type="search" -->
+		<!-- 								placeholder="pesquisar" aria-label="Search"> -->
+		<!-- 							<button class="btn btn-outline-success my-2 my-sm-0" -->
+		<!-- 								type="submit">Pesquisar</button> -->
+		<!-- 						</form> -->
+		<!-- 					</nav> -->
+		<!-- 				</div> -->
+
+	</div>
+
+
+
+
+	<div th:fragment="form">
+
+		<form>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label> <input type="email" class="form-control"
+					id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> <small
+					id="emailHelp" class="form-text text-muted">We'll never
+					share your email with anyone else.</small>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Password</label> <input type="password" class="form-control"
+					id="exampleInputPassword1" placeholder="Password">
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+				<label class="form-check-label" for="exampleCheck1">Check me
+					out</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+
+	</div>
+
+	<div th:fragment="footer">
+		<footer class="page-footer font-small blue">
+
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">
+				<a> 2020 Copyright Vuribi Software</a>
+			</div>
+			<!-- Copyright -->
+
+		</footer>
+
+	</div>
+</body>
+
+</html>

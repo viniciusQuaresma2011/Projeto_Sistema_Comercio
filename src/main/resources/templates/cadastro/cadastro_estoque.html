@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+	
+</head>
+
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+	}
+
+	#div2{
+		display: inline-block;
+		float: right ;
+		
+		margin-left: -30px;
+	}
+</style>
+<body>
+
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+	<div class="container" align="center" id="div2">
+
+		<h1>Cadastrar Estoque</h1>
+
+		<form class="w-25" align="center" th:object="${estoques}"
+			method="post" th:action="@{/cadastro/estoque/salvar}">
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Nome do Estoque</label> <input
+					name="nome" th:field="*{nome}" type="text" class="form-control"
+					id="exampleFormControlInput1" placeholder="nome do estoque" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Tipo</label> <select
+					th:field="*{tipo}" name="categoria" class="form-control"
+					id="exampleFormControlSelect1" required>
+					<option th:each="p : ${tipoEstoque}" th:value="${p}"
+						th:text="${p}"></option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="sel1">Quantidade Para O Estoque </label> <input
+					th:field="*{quantidade}" type="number" name="quantidade" min="1"
+					max="99" value="0" required>
+
+			</div>
+			
+			<input type="hidden" id="id" th:field="*{id}" value="" />
+			<button class="btn btn-primary" type="submit">Salvar</button>
+			<a type="button" class="btn btn-primary"
+				th:href="@{/cadastro/estoque/listar}">Voltar</a>
+		</form>
+	
+
+
+
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+</body>
+</html>

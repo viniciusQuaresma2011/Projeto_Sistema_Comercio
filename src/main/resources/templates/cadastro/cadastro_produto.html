@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head_pagina">
+	
+</head>
+<style>
+	#div1{
+		display: inline-block;
+		float: left;
+		margin-left: -20px;
+	}
+
+	#div2{
+		display: inline-block;
+		float: right ;
+		
+		margin-left: -30px;
+	}
+</style>
+<body>
+	<div class="container" id="div1">
+		<div th:replace="fragments :: menu"></div>
+	</div>
+
+
+
+	<div class="container" align="center" id="div2">
+		
+		<h1>Cadastrar Produto</h1>
+	
+		<form class="w-25" align="center" th:object="${produtos}"   method = "post"  th:action="@{/cadastro/produto/salvar}">
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Nome do Produto</label> <input name="nome"
+					th:field="*{nome}" type="text" class="form-control" id="exampleFormControlInput1"
+					placeholder="nome do produto" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Categoria</label> <select
+					th:field="*{categoria}" name="categoria" class="form-control" id="exampleFormControlSelect1">
+					<option th:each="p : ${listaCategoria}" th:value="${p}" th:text="${p}"  required></option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="sel1">Quantidade do Produto </label>
+					<input th:field="*{quantidade}"type="number" name="quantidade" min="1" max="99" value="0" required>
+				
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Selecione um Estoque</label> <select
+					th:field="*{estoque}" name="estoque" class="form-control" id="exampleFormControlSelect1" required>
+					<option th:each="p : ${listaEstoque}" th:value="${p.id}" th:text="${p.nome}" required></option>
+				</select>
+			</div>
+			<input type="hidden" id="id" th:field="*{id}" value="" />
+			<button class="btn btn-primary" type="submit" > Salvar</button>
+			<a type="button" class="btn btn-primary" th:href="@{/cadastro/produto/listar}">Voltar</a>
+		</form>
+	
+
+
+
+
+		<div class="fixed-bottom">
+			<div th:replace="fragments :: footer"></div>
+		</div>
+	</div>
+</body>
+</html>
