@@ -24,6 +24,13 @@ SUGESTÃO DE TESTE:
 
 
 
+
+
+
+
+
+
+
 **************PASSO A PASSO PARA ACESSAR O BANCO DE DADOS MYSQL DENTRO DO CONTAINER E CONFERIR O CADASTRO DO USUARIO, POR EXEMPLO. *****************
 
 1º Passo: Para conferir se o usuario cadastrado está no banco:
