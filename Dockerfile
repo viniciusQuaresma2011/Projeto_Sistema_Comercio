@@ -1,6 +1,6 @@
 FROM maven:3.8.2-jdk-11
 
-COPY . .
+COPY . /ProjetoBasico-0.0.1-SNAPSHOT.jar target/container
 
 RUN mvn clean package
 
