@@ -171,7 +171,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<finalName>ProjetoBasico<finalName/>
+			<finalName>ProjetoBasico-0.0.1-SNAPSHOT</finalName>
 		</plugins>
 	</build>
 
